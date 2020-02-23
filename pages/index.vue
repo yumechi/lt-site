@@ -19,8 +19,8 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn text color="deep-purple accent-4">
-                  <a href="./shuffle"> こちらから </a>
+                <v-btn text color="deep-purple accent-4" to="/shuffle">
+                  こちらから
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -35,8 +35,8 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn text color="deep-purple accent-4">
-                  <a href="./timer"> こちらから </a>
+                <v-btn text color="deep-purple accent-4" to="/timer">
+                  こちらから
                 </v-btn>
               </v-card-actions>
             </v-card>
