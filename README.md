@@ -2,6 +2,8 @@
 
 > My astonishing Nuxt.js project
 
+https://yumechi-lt-site.netlify.com/
+
 ## Build Setup
 
 ``` bash
