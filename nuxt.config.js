@@ -81,7 +81,7 @@ export default {
      */
     extend(config, ctx) {}
   },
-  ganerate: {
+    generate: {
     subFolders: false
   }
 }
