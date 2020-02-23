@@ -8,16 +8,18 @@
         v-model="users"
         placeholder="名前を改行区切りで入れてね"
       ></v-textarea>
-      <v-btn class="ma-2" outlined dark color="indigo" @click="shuffleUser"
+      <v-btn class="ma-2" dark color="indigo" @click="shuffleUser"
         >シャッフル!!</v-btn
       >
-      <v-data-table
-        :headers="headers"
-        :items="results"
-        :options.sync="options"
-        loading-text="ぐるぐる"
-        no-data-text="まだ順番が決まっていません"
-      ></v-data-table>
+      <blockquote class="blockquote">
+        <v-data-table
+          :headers="headers"
+          :items="results"
+          :options.sync="options"
+          loading-text="ぐるぐる"
+          no-data-text="まだ順番が決まっていません"
+        ></v-data-table>
+      </blockquote>
     </v-flex>
   </v-layout>
 </template>
