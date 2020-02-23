@@ -61,7 +61,9 @@ export default {
       return arr
     },
     shuffleUser() {
-      const shuffledUser = this.shuffleArray(this.sliceUserData())
+      const shuffledUser = this.shuffleArray(
+        this.shuffleArray(this.sliceUserData())
+      )
       if (shuffledUser.length === 0) {
         return {}
       }
