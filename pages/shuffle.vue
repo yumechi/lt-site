@@ -22,7 +22,7 @@
             showFirstLastPage: true
           }"
           loading-text="loading..."
-          no-data-text="no data"
+          no-data-text="まだ順番が決まっていません"
         >
         </v-data-table>
       </blockquote>
@@ -51,9 +51,6 @@ export default {
       total: 0
     }
   },
-  created() {
-    this.initData()
-  },
   methods: {
     sliceUserData() {
       return this.users.split('\n').filter((c) => c.trim().length > 0)
@@ -76,17 +73,16 @@ export default {
         this.shuffleArray(this.sliceUserData())
       )
       if (shuffledUser.length === 0) {
-        return {}
+        this.results = []
+        this.total = 0
+        return
       }
       const ret = []
       for (let i = 0; i < shuffledUser.length; i++) {
         ret.push({ order_id: i + 1, username: shuffledUser[i] })
       }
       this.results = ret
-    },
-    initData() {
-      this.total = 0
-      this.results = []
+      this.total = ret.length
     }
   }
 }
