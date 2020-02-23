@@ -78,11 +78,6 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        },
-        {
           icon: 'mdi-head-alert-outline',
           title: 'Shuffle',
           to: '/shuffle'
@@ -96,7 +91,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Yumechi LT Tools Site'
     }
   }
 }
