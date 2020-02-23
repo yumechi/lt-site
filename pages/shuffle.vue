@@ -36,7 +36,7 @@ export default {
         page: 1,
         itemsPerPage: 15,
         sortBy: ['order_id'],
-        sortDesc: [true],
+        sortDesc: [false],
         multiSort: false
       }
     }
