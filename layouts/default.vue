@@ -81,6 +81,16 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
+        },
+        {
+          icon: 'mdi-head-alert-outline',
+          title: 'Shuffle',
+          to: '/shuffle'
+        },
+        {
+          icon: 'mdi-clock-outline',
+          title: 'Timer',
+          to: '/timer'
         }
       ],
       miniVariant: false,
