@@ -8,7 +8,14 @@
         v-model="users"
         placeholder="名前を改行区切りで入れてね"
       ></v-textarea>
-      <v-btn class="ma-2" dark color="indigo" @click="shuffleUser"
+      <v-btn
+        class="ma-2"
+        dark
+        color="indigo"
+        :loading="loading"
+        :disabled="loading"
+        loading-text="loading..."
+        @click="loader = 'loading'"
         >シャッフル!!</v-btn
       >
       <blockquote class="blockquote">
@@ -21,6 +28,7 @@
             'items-per-page-options': [10, 20, 50, 100, 200, 300, 400, 500],
             showFirstLastPage: true
           }"
+          :loading="loading"
           loading-text="loading..."
           no-data-text="まだ順番が決まっていません"
         >
@@ -48,7 +56,20 @@ export default {
         mustSort: true
       },
       results: [],
-      total: 0
+      total: 0,
+      loader: null,
+      loading: false
+    }
+  },
+  watch: {
+    loader() {
+      const l = this.loader
+      this[l] = !this[l]
+
+      setTimeout(() => (this[l] = false), 500)
+      this.shuffleUser()
+
+      this.loader = null
     }
   },
   methods: {
@@ -68,21 +89,24 @@ export default {
       }
       return arr
     },
+    setResult(data) {
+      this.results = data
+      this.total = (data ?? []).length
+    },
     shuffleUser() {
-      const shuffledUser = this.shuffleArray(
-        this.shuffleArray(this.sliceUserData())
-      )
-      if (shuffledUser.length === 0) {
-        this.results = []
-        this.total = 0
+      const data = this.shuffleArray(this.shuffleArray(this.sliceUserData()))
+      if (data.length === 0) {
+        this.setResult([])
         return
       }
-      const ret = []
-      for (let i = 0; i < shuffledUser.length; i++) {
-        ret.push({ order_id: i + 1, username: shuffledUser[i] })
-      }
-      this.results = ret
-      this.total = ret.length
+      const ret = data.map((value, index) => {
+        return {
+          order_id: index + 1,
+          username: value
+        }
+      })
+
+      this.setResult(ret)
     }
   }
 }
