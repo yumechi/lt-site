@@ -19,7 +19,7 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn text color="deep-purple accent-4" to="/shuffle">
+                <v-btn class="ma-4" dark color="indigo" to="/shuffle" nuxt>
                   こちらから
                 </v-btn>
               </v-card-actions>
@@ -35,7 +35,7 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn text color="deep-purple accent-4" to="/timer">
+                <v-btn class="ma-4" dark color="indigo" to="/timer" nuxt>
                   こちらから
                 </v-btn>
               </v-card-actions>
