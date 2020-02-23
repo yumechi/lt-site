@@ -16,9 +16,15 @@
           :headers="headers"
           :items="results"
           :options.sync="options"
-          loading-text="ぐるぐる"
-          no-data-text="まだ順番が決まっていません"
-        ></v-data-table>
+          :server-items-length="total"
+          :footer-props="{
+            'items-per-page-options': [10, 20, 50, 100, 200, 300, 400, 500],
+            showFirstLastPage: true
+          }"
+          loading-text="loading..."
+          no-data-text="no data"
+        >
+        </v-data-table>
       </blockquote>
     </v-flex>
   </v-layout>
@@ -29,19 +35,24 @@ export default {
   data() {
     return {
       users: '',
-      results: [],
       headers: [
         { text: '順番', align: 'center', sortable: true, value: 'order_id' },
         { text: 'お名前', align: 'center', sortable: false, value: 'username' }
       ],
       options: {
         page: 1,
-        itemsPerPage: 15,
+        itemsPerPage: 20,
         sortBy: ['order_id'],
         sortDesc: [false],
-        multiSort: false
-      }
+        multiSort: false,
+        mustSort: true
+      },
+      results: [],
+      total: 0
     }
+  },
+  created() {
+    this.initData()
   },
   methods: {
     sliceUserData() {
@@ -72,6 +83,10 @@ export default {
         ret.push({ order_id: i + 1, username: shuffledUser[i] })
       }
       this.results = ret
+    },
+    initData() {
+      this.total = 0
+      this.results = []
     }
   }
 }
